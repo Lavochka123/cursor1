@@ -1,1 +1,68 @@
+{% extends 'base.html' %}
+{% block title %}Svety — Открытка {{ pid }}{% endblock %}
+
+{% block content %}
+<section class="max-w-4xl mx-auto px-4 py-10">
+  <h1 class="text-3xl md:text-4xl font-extrabold">Открытка</h1>
+  {% if title %}
+    <p class="mt-2 text-slate-600 dark:text-slate-300">{{ title }}</p>
+  {% endif %}
+
+  <div class="mt-8 grid md:grid-cols-3 gap-6">
+    <div class="rounded-2xl ring-1 ring-black/5 overflow-hidden bg-white/60 dark:bg-slate-900/60">
+      <div class="p-3 text-sm font-semibold">Страница 1 — Приветствие</div>
+      <div class="aspect-[4/5]">
+        {% if img1 %}
+          <img src="/data/{{ img1 }}" alt="Стр. 1" class="w-full h-full object-cover" />
+        {% else %}
+          <div class="w-full h-full grid place-items-center text-slate-400">Нет изображения</div>
+        {% endif %}
+      </div>
+      {% if greeting %}
+        <div class="p-3 text-sm">{{ greeting }}</div>
+      {% endif %}
+    </div>
+
+    <div class="rounded-2xl ring-1 ring-black/5 overflow-hidden bg-white/60 dark:bg-slate-900/60">
+      <div class="p-3 text-sm font-semibold">Страница 2 — Согласие</div>
+      <div class="aspect-[4/5]">
+        {% if img2 %}
+          <img src="/data/{{ img2 }}" alt="Стр. 2" class="w-full h-full object-cover" />
+        {% else %}
+          <div class="w-full h-full grid place-items-center text-slate-400">Нет изображения</div>
+        {% endif %}
+      </div>
+      <div class="p-3 text-sm">
+        {% if consent is none %}
+          Ответ не выбран
+        {% elif consent %}
+          ✅ Согласна
+        {% else %}
+          ❌ Не согласна
+        {% endif %}
+      </div>
+    </div>
+
+    <div class="rounded-2xl ring-1 ring-black/5 overflow-hidden bg-white/60 dark:bg-slate-900/60">
+      <div class="p-3 text-sm font-semibold">Страница 3 — Комментарий</div>
+      <div class="aspect-[4/5]">
+        {% if img3 %}
+          <img src="/data/{{ img3 }}" alt="Стр. 3" class="w-full h-full object-cover" />
+        {% else %}
+          <div class="w-full h-full grid place-items-center text-slate-400">Нет изображения</div>
+        {% endif %}
+      </div>
+      {% if comment %}
+        <div class="p-3 text-sm">{{ comment }}</div>
+      {% endif %}
+    </div>
+  </div>
+
+  <div class="mt-10 text-sm text-slate-500 dark:text-slate-400">
+    ID проекта: <code>{{ pid }}</code>
+  </div>
+</section>
+{% endblock %}
+
+
 
